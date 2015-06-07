@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+<head>
+<meta charset="utf-8" />
+    <title>Online Student</title>
+    <style type="text/css">
+        html, body {
+            margin:0 auto;
+        }
+        .main {
+            margin: 0 auto;
+            height:50px;
+            width:100%;
+            background-color:#80BFFF;
+            display:block;
+        }
+        .main .heading {
+            font-weight:bold;
+            color:#000;
+            text-align:center;
+            font-size:16px;
+            margin:0px;
+            padding:10px;
+        }
+        .login {
+            margin: 10% auto;
+            height:250px;
+            width:100%;
+            background-color:#74B8C0;
+            display:block;
+
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 20px 20px;
+            width: 310px;
+            background: white;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .success
+        {
+            color:green;
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 20px 20px;
+            width: 310px;
+            background: white;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .signup
+        {
+            position: relative;
+            margin: 0 auto;
+            padding: 20px 20px 20px;
+            width: 310px;
+            background: white;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        .login h1 {
+          margin: -20px -20px 21px;
+          line-height: 40px;
+          font-size: 15px;
+          font-weight: bold;
+          color: #555;
+          text-align: center;
+          background-color:#74B8C0;
+          display:block;
+        }
+        td .buttons {
+	        padding-left:50px;
+	        margin:auto;
+        }
+        .error 
+        {
+            color:red;
+        }
+    </style>
+    <script type="text/javascript">
+        function onLoginClick() {
+	var a=document.getElementById("userName").value;
+	var b=document.getElementById("password").value;
+	if(a==""||a==null)
+	{
+	alert("You must enter username");
+	document.getElementById('userName').focus();
+	return false;
+	}
+	else if(b==null||b=="")
+	{
+	alert("You must enter password");
+	document.getElementById('password').focus();
+	return false;
+	}
+	else 
+	{
+	 document.getElementById('success').style.display = 'block';
+	document.getElementById('success').innerHTML = 'Login has been successfull';
+        document.getElementById('login').style.display = 'none';
+	}
+        }
+        function onForgotPwdClick() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('signup').style.display = 'none';            
+            document.getElementById('success').style.display = 'none';
+            document.getElementById('forgotPassword').style.display = 'block';
+        }
+	function onSingupClick() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('success').style.display = 'none';
+            document.getElementById('signup').style.display = 'block';
+        }
+	function onRegisterClick() {
+            var msg = '';
+            if (document.getElementById('firstName').value == '') {
+                msg += 'First Name';
+            }
+            if (document.getElementById('lastName').value == '') {
+                msg += (msg == '' ? '' : ', ') + 'Last Name';
+            }
+            if (document.getElementById('email').value == '') {
+                msg += (msg == '' ? '' : ', ') + 'E-mail';
+            }
+    
+            if (msg != '') {
+                 alert('You must eneter ' + msg);
+                if (document.getElementById('firstName').value == '') {
+                    document.getElementById('firstName').focus();
+                }
+                else if (document.getElementById('lastName').value == '') {
+                    document.getElementById('lastName').focus();
+                }
+                else if (document.getElementById('email').value == '') {
+                    document.getElementById('email').focus();
+                }
+                return;
+            }
+            document.getElementById('signup').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+            document.getElementById('success').innerHTML = 'You have been successfully registered!';
+        }
+	function onGetPasswordClick() {
+            var msg = '';
+            if (document.getElementById('email').value == '') {
+                msg += 'E-mail';
+            }
+            if (msg != '') {
+                document.getElementById('forgotPwdError').innerHTML = '<b>You must eneter ' + msg + '</b>';
+                document.getElementById('email').focus();
+                return;
+            }
+            document.getElementById('success').style.display = 'block';
+            document.getElementById('success').innerHTML = 'New password information will be shared via email';
+            document.getElementById('forgotPassword').style.display = 'none';
+        }
+function onreturnClick() {
+            
+            document.getElementById('signup').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+           function returnClick()
+           {
+           document.getElementById('forgotPassword').style.display = 'none';
+           document.getElementById('login').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div class="main">
+            <p class="heading">Welcome to student online account access</p>
+        </div>
+        <div class="body">
+            <div class="login" id="login">
+                <table style="width:100%;">
+                    <tr><td colspan="2"><h1>Login</h1></td></tr>
+                    <tr><td>User Name</td><td><input type="text" id="userName" value="" /></td></tr>
+                    <tr><td>Password</td><td><input type="password" id="password" value=""/></td></tr>
+                    <tr><td colspan="2" style="height:20px;"></td></tr>
+                    <tr><td colspan="2"><div id="loginerror" class="error"></div></td></tr>
+                    <tr><td colspan="2"><div class="buttons"><button onclick="onLoginClick();">Login</button>&nbsp;<button onclick="onSingupClick();">Signup</button>&nbsp;<button onclick="onForgotPwdClick();">Forgot Password</button></div></td></tr>
+
+                </table>
+            </div>
+            <div class="login" id="forgotPassword" style="display:none;">
+                <table style="width:100%;">
+                    <tr><td colspan="2"><h1>Forgot Password</h1></td></tr>
+                    <tr><td>E-mail</td><td><input type="text" id="userEmail" value="" /></td></tr>                    
+                    <tr><td colspan="2" style="height:20px;"></td></tr>
+                    <tr><td colspan="2"><div id="forgotPwdError" class="error"></div></td></tr>
+                    <tr><td colspan="2"><div class="buttons"><button onclick="onGetPasswordClick();">Get Password</button></div></td></tr>
+		    <td colspan="2"><div class="buttons"><button onclick="returnClick();">Back</button></div></td>
+
+                </table>
+            </div>
+            <div class="signup" id="signup" style="display:none;">
+                <table style="width:100%;">
+                    <tr><td>First Name</td><td><input type="text" id="firstName"/></td></tr>
+                    <tr><td>Last Name</td><td><input type="text" id="lastName"/></td></tr>
+                    <tr><td>Address</td><td><input type="text" id="Address"/></td></tr>
+                    <tr><td>Phone</td><td><input type="text" id="phone"/></td></tr>
+                    <tr><td>E-mail</td><td><input type="text" id="email"/></td></tr>
+                    <tr><td colspan="2" style="height:20px;"></td></tr>
+                    <tr><td colspan="2"><div id="signuperror" class="error"></div></td></tr>
+                    <tr><td colspan="2"><div class="buttons"><button onclick="onRegisterClick();">Register</button></td></tr>
+		    <tr><td colspan="2"><div class="buttons"><button onclick="onreturnClick() ;">Login</button></td></tr>
+                </table>                
+            </div>
+            <div class="success" id="success" style="display:none;">
+<div class="buttons"><button onclick="onreturnClick();">Back</button></div>
+</div>
+        </div>
+    </div>
+    
+</body>
+</body>
+</html>
